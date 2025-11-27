@@ -1,45 +1,26 @@
-name: Deploy Laravel to Somee
+name: Deploy HTML to Somee
 
 on:
   push:
     branches:
-      - main   # deploy khi push lên nhánh main
+      - main   # chạy khi push nhánh main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Lấy source code từ GitHub
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Setup PHP (Laravel cần)
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, intl, pdo, pdo_mysql
-          coverage: none
-
-      # 3. Install Composer dependencies
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
-
-      # 4. Build Laravel (cache + route + config)
-      - name: Laravel optimize
-        run: |
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
-
-      # 5. Upload code lên Somee qua FTP
-      - name: Upload via FTP to Somee
+      # 2. Upload HTML qua FTP
+      - name: Upload HTML via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
           server: ftp://phat123.somee.com/www.phat123.somee.com
           username: UncleFour
           password: Chukhjtinhnghich72*
           protocol: ftps
-          local-dir: ./
+          local-dir: ./   # thư mục HTML của bạn
           server-dir: /test/
