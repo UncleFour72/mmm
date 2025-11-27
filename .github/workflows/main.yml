@@ -22,7 +22,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./
-          server-dir: /1
+          server-dir: /1/
           exclude: |
             **/.git*
             **/.github*
