@@ -1,4 +1,4 @@
-name: Deploy HTML to Somee
+name: 🚀 Deploy to inet via FTP
 
 on:
   push:
@@ -10,26 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: 🔍 Checkout source
+        uses: actions/checkout@v4
 
-      - name: Upload HTML via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      - name: 📦 Upload files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: 	ftp://phat123.somee.com/www.phat123.somee.com
+          server: ftp://phat123.somee.com/www.phat123.somee.com
           username: UncleFour
           password: Chukhjtinhnghich72*
-          protocol: ftp          # Somee hỗ trợ FTPS, nếu lỗi hãy đổi thành 'ftp'
-          port: 21                 # Mặc định là 21
-          local-dir: ./            # Upload toàn bộ thư mục hiện tại
-          
-          # QUAN TRỌNG: Sửa server-dir
-          # Nếu bạn muốn upload vào thư mục gốc của web, thường để là ./ 
-          # Nếu Somee yêu cầu vào thư mục tên miền, hãy để: /phat123.somee.com/
-          server-dir: ./
-          
-          # Thêm dòng này để tránh xóa file hệ thống của Somee
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'public_html/' }}
           exclude: |
             **/.git*
-            **/.git*/**
+            **/.github*
             **/node_modules/**
+            **/README.md
