@@ -16,7 +16,7 @@ jobs:
       - name: 📦 Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp://phat123.somee.com/www.phat123.somee.com
+          server: phat123.somee.com
           username: UncleFour
           password: Chukhjtinhnghich72*
           port: 21
