@@ -18,7 +18,7 @@ jobs:
       - name: Upload HTML via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ftp://phat123.somee.com/www.phat123.somee.com
+          server: phat123.somee.com
           username: UncleFour
           password: Chukhjtinhnghich72*
           protocol: ftps
