@@ -37,9 +37,9 @@ jobs:
       - name: Upload via FTP to Somee
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ${{ 	155.254.244.40/www.phat123.somee.com }}
-          username: ${{ UncleFour }}
-          password: ${{ Chukhjtinhnghich72* }}
+          server: ftp://phat123.somee.com/www.phat123.somee.com
+          username: UncleFour
+          password: Chukhjtinhnghich72*
           protocol: ftps
           local-dir: ./
-          server-dir: ${{ /test/ }}
+          server-dir: /test/
